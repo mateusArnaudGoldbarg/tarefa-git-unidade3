@@ -1,0 +1,57 @@
+# 1. Criar diretório e inicializar repositório Git
+mkdir tarefa-git-unidade3
+cd tarefa-git-unidade3
+git init
+
+# 2. Criar arquivos de texto e fazer o commit inicial
+echo "Conteúdo do arquivo 1" > arquivo1.txt
+echo "Conteúdo do arquivo 2" > arquivo2.txt
+echo "Conteúdo do arquivo 3" > arquivo3.txt
+git add .
+git commit -m "Commit dos três arquivos de texto"
+
+# 3. Alterar dois arquivos e registrar as mudanças
+echo "Nova linha no arquivo 1" >> arquivo1.txt
+echo "Nova linha no arquivo 2" >> arquivo2.txt
+git status
+git diff
+git add arquivo1.txt arquivo2.txt
+git commit -m "Alterações em arquivo1 e arquivo2"
+
+# 4. Visualizar histórico de commits
+git log
+git log --oneline
+git log --graph --decorate --all
+
+# 5. Reverter a última alteração mantendo o histórico
+git revert HEAD
+
+# 6. Fazer modificação temporária e usar stash
+echo "Alteração temporária" >> arquivo3.txt
+git stash
+
+# Criar nova branch e mudar de contexto
+git checkout -b nova-feature
+
+# Voltar à branch principal e aplicar stash
+git checkout main
+git stash pop
+
+# 7. Visualizar movimentações recentes, inclusive stash
+git reflog
+
+# 8. Marcar o commit inicial com uma tag descritiva
+git log --reverse   # (para pegar o hash do commit inicial)
+git tag -a v1.0 -m "Versão estável inicial" a9df841dc7a8b20aeb71d662ea85858739b801da
+
+# 9. Adicionar repositório remoto e enviar alterações
+git remote add origin https://github.com/mateusArnaudGoldbarg/tarefa-git-unidade3.git
+git push origin main
+git push origin v1.0
+
+# 10. Adicionar comandos.txt ao repositório
+nano comandos.txt    # (colar este conteúdo dentro do arquivo)
+git add comandos.txt
+git commit -m "Adiciona comandos utilizados na tarefa"
+git push origin main
+
