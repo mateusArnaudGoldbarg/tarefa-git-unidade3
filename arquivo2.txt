@@ -1,1 +1,2 @@
 Conteúdo do arquivo 2
+Nova linha no arquivo 2
